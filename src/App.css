@@ -1,0 +1,48 @@
+/* ─── App Shell ────────────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-primary);
+  position: relative;
+}
+
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-width: 0;
+  transition: margin-left var(--transition-normal);
+}
+
+.app-shell--sidebar-open     .app-main { margin-left: var(--sidebar-width); }
+.app-shell--sidebar-collapsed .app-main { margin-left: 60px; }
+
+.app-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.app-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .app-shell--sidebar-open     .app-main { margin-left: 60px; }
+  .app-shell--sidebar-collapsed .app-main { margin-left: 60px; }
+}
+
+@media (max-width: 480px) {
+  .app-shell--sidebar-open     .app-main { margin-left: 0; }
+  .app-shell--sidebar-collapsed .app-main { margin-left: 0; }
+}

@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap');
+
+/* ─── Design Tokens ─────────────────────────────────────────────────── */
+:root {
+  /* ── Backgrounds: deep dark with cool blue-black cast ── */
+  --black:        #080810;
+  --near-black:   #0c0c14;
+  --bg-primary:   #0c0c14;
+  --bg-secondary: #11111c;
+  --bg-card:      #161625;
+  --bg-card-hover:#1b1b2e;
+  --bg-elevated:  #20203a;
+
+  /* ── Typography ── */
+  --white:          #e8e8f2;
+  --text-primary:   #dcdcec;
+  --text-secondary: #7a7d9e;
+  --text-muted:     #3e4060;
+  --text-accent:    #e8e8f2;
+
+  /* ── Primary accent: deep crimson red ── */
+  --accent-primary:   #c53636;   /* rich crimson — CTAs, active states */
+  --accent-secondary: #a82b2b;   /* darker red — hover states */
+
+  /* ── Secondary accents (grey/red variants instead of blue) ── */
+  --accent-teal:      #a82b2b;   /* dark red */
+  --accent-green:     #8b0000;   /* deep red */
+  --accent-amber:     #ff4d4d;   /* bright red */
+  --accent-red:       #c53636;   
+  --accent-pink:      #b03060;   
+
+  /* ── Priority Color Scale (red → grey) ── */
+  --priority-urgent: #ff0000;   
+  --priority-high:   #cc0000;   
+  --priority-medium: #990000;   
+  --priority-low:    #666666;   
+
+  /* ── Status colors ── */
+  --status-pending:  #555555;   /* muted gray */
+  --status-progress: #a82b2b;   /* dark red */
+  --status-done:     #333333;   /* dark gray/black */
+  --status-overdue:  #ff0000;   /* bright red */
+
+  /* ── Borders: subtle red-tinted lines ── */
+  --border-subtle:  rgba(197, 54, 54, 0.10);
+  --border-medium:  rgba(197, 54, 54, 0.20);
+  --border-strong:  rgba(197, 54, 54, 0.45);
+  --glass-bg:       rgba(12, 12, 20, 0.96);
+  --glass-border:   rgba(197, 54, 54, 0.15);
+
+  /* ── Shadows ── */
+  --shadow-sm:          0 1px 4px rgba(0,0,0,0.7);
+  --shadow-md:          0 4px 18px rgba(0,0,0,0.6);
+  --shadow-lg:          0 12px 42px rgba(0,0,0,0.75);
+  --shadow-glow:        0 0 20px rgba(197, 54, 54, 0.12);
+  --shadow-glow-strong: 0 0 40px rgba(197, 54, 54, 0.22);
+
+  /* ── Spacing ── */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* ── Border Radius ── */
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
+  --radius-xl:   14px;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --transition-fast:   0.12s ease;
+  --transition-normal: 0.22s ease;
+  --transition-slow:   0.4s ease;
+
+  /* ── Sidebar ── */
+  --sidebar-width: 242px;
+
+  /* ── Fonts ── */
+  --font-display: 'Inter', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: #252540; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a60; }
+
+/* ─── Typography ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text-primary);
+}
+h1 { font-size: 2.2rem; font-weight: 800; }
+h2 { font-size: 1.5rem; font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+h4 { font-size: 0.95rem; font-weight: 600; }
+
+p { color: var(--text-secondary); line-height: 1.6; }
+a { color: var(--accent-teal); text-decoration: none; transition: color var(--transition-fast); }
+a:hover { color: var(--text-primary); }
+button { font-family: var(--font-body); cursor: pointer; border: none; outline: none; }
+input, textarea, select { font-family: var(--font-body); outline: none; }
+
+/* ─── Utilities ─────────────────────────────────────────────────── */
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.justify-center { justify-content: center; }
+.gap-sm { gap: var(--space-sm); }
+.gap-md { gap: var(--space-md); }
+.gap-lg { gap: var(--space-lg); }
+.w-full { width: 100%; }
+.text-muted { color: var(--text-muted); font-size: 0.78rem; }
+.text-sm { font-size: 0.85rem; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mono { font-family: var(--font-mono); }
+
+/* ─── Subtle noise texture ───────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+/* ─── Keyframes ──────────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes countUp {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+@keyframes bounce-in {
+  0%   { transform: scale(0.95); opacity: 0; }
+  60%  { transform: scale(1.02); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-in    { animation: fadeIn 0.35s ease both; }
+.animate-slide-left { animation: slideInLeft 0.3s ease both; }
+.animate-slide-right{ animation: slideInRight 0.3s ease both; }
+.animate-bounce-in  { animation: bounce-in 0.35s ease both; }
