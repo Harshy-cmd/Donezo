@@ -95,17 +95,19 @@ function reducer(state, action) {
         habits: state.habits.filter(h => h.id !== action.payload)
       };
       break;
+    case 'UPDATE_GOAL':
     case 'UPDATE_GOAL_PROGRESS':
       newState = {
         ...state,
         goals: state.goals.map(g => g.id === action.payload.id ? { ...g, progress: action.payload.progress } : g)
       };
       break;
+    case 'TOGGLE_MILESTONE':
     case 'TOGGLE_GOAL_MILESTONE':
       newState = {
         ...state,
         goals: state.goals.map(g => {
-          if (g.id === action.payload.goalId) {
+          if (g.id === (action.payload.goalId || action.payload.id)) {
             return {
               ...g,
               milestones: g.milestones.map(m => m.id === action.payload.milestoneId ? { ...m, done: !m.done } : m)
@@ -157,28 +159,7 @@ function reducer(state, action) {
     case 'ADD_GOAL':
       newState = { ...state, goals: [...state.goals, action.payload] };
       break;
-    case 'UPDATE_GOAL':
-    case 'UPDATE_GOAL_PROGRESS':
-      newState = {
-        ...state,
-        goals: state.goals.map(g => g.id === action.payload.id ? { ...g, progress: action.payload.progress } : g)
-      };
-      break;
-    case 'TOGGLE_MILESTONE':
-    case 'TOGGLE_GOAL_MILESTONE':
-      newState = {
-        ...state,
-        goals: state.goals.map(g => {
-          if (g.id === (action.payload.goalId || action.payload.id)) {
-            return {
-              ...g,
-              milestones: g.milestones.map(m => m.id === action.payload.milestoneId ? { ...m, done: !m.done } : m)
-            };
-          }
-          return g;
-        })
-      };
-      break;
+
     case 'ADD_HABIT':
       newState = { ...state, habits: [...state.habits, action.payload] };
       break;

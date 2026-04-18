@@ -17,8 +17,8 @@ function GoalCard({ goal, onToggleMilestone, onDelete, onUpdateProgress }) {
   return (
     <div className="goal-card" style={{ '--cat-color': cat?.color, background: gradient }}>
       <div className="goal-card__header">
-        <div className="goal-card__type-badge goal-card__type-badge--${goal.type}">
-      {goal.type === 'short' ? '⚡ Short-term' : '🎯 Long-term'}
+        <div className={`goal-card__type-badge goal-card__type-badge--${goal.type}`}>
+          {goal.type === 'short' ? '⚡ Short-term' : '🎯 Long-term'}
         </div>
         <button className="goal-card__delete" onClick={() => onDelete(goal.id)}>✕</button>
       </div>
