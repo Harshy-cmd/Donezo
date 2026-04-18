@@ -47,11 +47,17 @@ Built with a clean UI and scalable architecture, it ensures a seamless experienc
 ## 📂 Project Structure
 Donezo/
 │
-├── Frontend/ # Client-side application
-├── Backend/ # Server-side logic & APIs
-├── docker-compose.yml
-├── package.json
-└── README.md
+
+├──
+Frontend/ # Client-side application
+├──
+Backend/ # Server-side logic & APIs
+├── 
+docker-compose.yml
+├──
+package.json
+└──
+README.md
 
 ## ⚙️ Installation & Setup
 
