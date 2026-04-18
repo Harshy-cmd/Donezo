@@ -11,6 +11,8 @@ const initialState = {
   activeView: 'dashboard',
   sidebarOpen: true,
   showTaskModal: false,
+  showGoalModal: false,
+  showHabitModal: false,
   selectedTask: null,
   taskFilter: { search: '', status: 'all', priority: 'all', category: 'all', sort: 'dueDate' },
 };
@@ -140,6 +142,65 @@ function reducer(state, action) {
     case 'SELECT_TASK':
         newState = { ...state, selectedTask: action.payload, showTaskModal: true };
         break;
+    case 'OPEN_GOAL_MODAL':
+      newState = { ...state, showGoalModal: true };
+      break;
+    case 'CLOSE_GOAL_MODAL':
+      newState = { ...state, showGoalModal: false };
+      break;
+    case 'OPEN_HABIT_MODAL':
+      newState = { ...state, showHabitModal: true };
+      break;
+    case 'CLOSE_HABIT_MODAL':
+      newState = { ...state, showHabitModal: false };
+      break;
+    case 'ADD_GOAL':
+      newState = { ...state, goals: [...state.goals, action.payload] };
+      break;
+    case 'UPDATE_GOAL':
+    case 'UPDATE_GOAL_PROGRESS':
+      newState = {
+        ...state,
+        goals: state.goals.map(g => g.id === action.payload.id ? { ...g, progress: action.payload.progress } : g)
+      };
+      break;
+    case 'TOGGLE_MILESTONE':
+    case 'TOGGLE_GOAL_MILESTONE':
+      newState = {
+        ...state,
+        goals: state.goals.map(g => {
+          if (g.id === (action.payload.goalId || action.payload.id)) {
+            return {
+              ...g,
+              milestones: g.milestones.map(m => m.id === action.payload.milestoneId ? { ...m, done: !m.done } : m)
+            };
+          }
+          return g;
+        })
+      };
+      break;
+    case 'ADD_HABIT':
+      newState = { ...state, habits: [...state.habits, action.payload] };
+      break;
+    case 'TOGGLE_HABIT_TODAY':
+      newState = {
+        ...state,
+        habits: state.habits.map(h => {
+          if (h.id === action.payload) {
+            const isDone = !h.completedToday;
+            return {
+              ...h,
+              completedToday: isDone,
+              streak: isDone ? h.streak + 1 : Math.max(0, h.streak - 1)
+            };
+          }
+          return h;
+        })
+      };
+      break;
+    case 'ADD_NOTIFICATION':
+      newState = { ...state, notifications: [action.payload, ...state.notifications] };
+      break;
     default:
       return state;
   }

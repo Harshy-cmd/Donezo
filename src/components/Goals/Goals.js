@@ -188,13 +188,17 @@ function GoalModal({ onClose }) {
 
 export default function Goals() {
   const { state, dispatch } = useApp();
-  const { goals, showGoalModal } = state;
+  const { goals, showGoalModal, taskFilter } = state;
   const [filter, setFilter] = useState('all');
 
-  const filtered = filter === 'all' ? goals : goals.filter(g => g.type === filter);
+  const searchFiltered = taskFilter.search
+    ? goals.filter(g => g.title.toLowerCase().includes(taskFilter.search.toLowerCase()) || g.description?.toLowerCase().includes(taskFilter.search.toLowerCase()))
+    : goals;
 
-  const avgProgress = goals.length
-    ? Math.round(goals.reduce((s, g) => s + g.progress, 0) / goals.length)
+  const filtered = filter === 'all' ? searchFiltered : searchFiltered.filter(g => g.type === filter);
+
+  const avgProgress = searchFiltered.length
+    ? Math.round(searchFiltered.reduce((s, g) => s + g.progress, 0) / searchFiltered.length)
     : 0;
 
   return (
@@ -204,21 +208,21 @@ export default function Goals() {
         <div className="goals-summary-card goals-summary-card--primary">
           <span className="goals-summary-icon">🎯</span>
           <div>
-            <div className="goals-summary-val">{goals.length}</div>
+            <div className="goals-summary-val">{searchFiltered.length}</div>
             <div className="goals-summary-key">Total Goals</div>
           </div>
         </div>
         <div className="goals-summary-card">
           <span className="goals-summary-icon">⚡</span>
           <div>
-            <div className="goals-summary-val">{goals.filter(g => g.type === 'short').length}</div>
+            <div className="goals-summary-val">{searchFiltered.filter(g => g.type === 'short').length}</div>
             <div className="goals-summary-key">Short-term</div>
           </div>
         </div>
         <div className="goals-summary-card">
           <span className="goals-summary-icon">🏆</span>
           <div>
-            <div className="goals-summary-val">{goals.filter(g => g.type === 'long').length}</div>
+            <div className="goals-summary-val">{searchFiltered.filter(g => g.type === 'long').length}</div>
             <div className="goals-summary-key">Long-term</div>
           </div>
         </div>

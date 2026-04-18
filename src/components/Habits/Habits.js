@@ -150,12 +150,16 @@ function HabitModal({ onClose }) {
 
 export default function Habits() {
   const { state, dispatch } = useApp();
-  const { habits, showHabitModal } = state;
+  const { habits, showHabitModal, taskFilter } = state;
 
-  const totalDone = habits.filter(h => h.completedToday).length;
-  const maxStreak = Math.max(...habits.map(h => h.streak), 0);
-  const avgRate = habits.length
-    ? Math.round(habits.reduce((s, h) => s + (h.history.slice(0, 7).filter(v => v).length / 7 * 100), 0) / habits.length)
+  const filteredHabits = taskFilter.search
+    ? habits.filter(h => h.title.toLowerCase().includes(taskFilter.search.toLowerCase()))
+    : habits;
+
+  const totalDone = filteredHabits.filter(h => h.completedToday).length;
+  const maxStreak = Math.max(...filteredHabits.map(h => h.streak), 0);
+  const avgRate = filteredHabits.length
+    ? Math.round(filteredHabits.reduce((s, h) => s + (h.history.slice(0, 7).filter(v => v).length / 7 * 100), 0) / filteredHabits.length)
     : 0;
 
   return (
@@ -164,7 +168,7 @@ export default function Habits() {
       <div className="habits-topbar">
         <div className="habits-summary">
           <div className="habits-summary-item">
-            <span className="habits-summary-val habits-summary-val--green">{totalDone}/{habits.length}</span>
+            <span className="habits-summary-val habits-summary-val--green">{totalDone}/{filteredHabits.length}</span>
             <span className="habits-summary-key">Done Today</span>
           </div>
           <div className="habits-summary-divider" />
@@ -190,22 +194,22 @@ export default function Habits() {
       <div className="habits-today-bar">
         <div className="habits-today-label">
           <span>Today's Progress</span>
-          <strong>{totalDone} of {habits.length} habits complete</strong>
+          <strong>{totalDone} of {filteredHabits.length} habits complete</strong>
         </div>
         <div className="habits-today-track">
           <div
             className="habits-today-fill"
-            style={{ width: habits.length > 0 ? `${(totalDone / habits.length) * 100}%` : '0%' }}
+            style={{ width: filteredHabits.length > 0 ? `${(totalDone / filteredHabits.length) * 100}%` : '0%' }}
           />
           <span className="habits-today-pct">
-            {habits.length > 0 ? Math.round((totalDone / habits.length) * 100) : 0}%
+            {filteredHabits.length > 0 ? Math.round((totalDone / filteredHabits.length) * 100) : 0}%
           </span>
         </div>
       </div>
 
       {/* Grid */}
       <div className="habits-grid">
-        {habits.map((habit, i) => (
+        {filteredHabits.map((habit, i) => (
           <div key={habit.id} style={{ animationDelay: `${i * 0.05}s` }} className="animate-fade-in">
             <HabitCard
               habit={habit}
@@ -214,7 +218,7 @@ export default function Habits() {
             />
           </div>
         ))}
-        {habits.length === 0 && (
+        {filteredHabits.length === 0 && (
           <div className="habits-empty">
             <span>🌱</span>
             <h3>No habits yet</h3>
