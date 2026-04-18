@@ -431,6 +431,14 @@
   .dash-banner { flex-direction: column; align-items: flex-start; }
   .dash-banner__title { font-size: 1.4rem; }
 }
+@media (max-width: 768px) {
+  .stat-card__value { font-size: 1.5rem; }
+  .stat-card__icon { font-size: 1.2rem; }
+}
 @media (max-width: 480px) {
-  .dash-stats { grid-template-columns: 1fr 1fr; }
+  .dash-stats { grid-template-columns: 1fr; }
+  .dash-banner { padding: 20px; }
+  .dash-banner__actions { flex-direction: column; width: 100%; }
+  .dash-banner__btn { width: 100%; text-align: center; }
+  .stat-card { padding: 15px 20px; }
 }

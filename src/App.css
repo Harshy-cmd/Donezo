@@ -42,7 +42,10 @@
   .app-shell--sidebar-collapsed .app-main { margin-left: 60px; }
 }
 
-@media (max-width: 480px) {
-  .app-shell--sidebar-open     .app-main { margin-left: 0; }
-  .app-shell--sidebar-collapsed .app-main { margin-left: 0; }
+@media (max-width: 768px) {
+  .app-shell--sidebar-open     .app-main,
+  .app-shell--sidebar-collapsed .app-main { 
+    margin-left: 0; 
+    padding-bottom: 65px; /* Leave space for bottom nav bar */
+  }
 }
