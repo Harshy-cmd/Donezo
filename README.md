@@ -1,96 +1,90 @@
-# 🚀 Todo List App
+# 🚀 Donezo – From To-Do to Done
 
-A clean and efficient Todo List application designed to help users organize tasks, manage daily activities, and stay productive. This project focuses on simplicity, performance, and a user-friendly interface.
+> A modern task management application designed to simplify productivity and keep you focused on what truly matters.
 
----
-
-## 📌 Features
-
-* ✅ Add new tasks
-* ✏️ Edit existing tasks
-* 🗑️ Delete tasks
-* ✔️ Mark tasks as completed
-* 📱 Responsive design for all devices
-* ⚡ Fast and intuitive user experience
+🌐 Live Demo: https://donezo-iota.vercel.app  
 
 ---
 
-## 🛠️ Tech Stack
+## 📌 Overview
 
-* Frontend: HTML, CSS, JavaScript *(or React / your framework)*
-* Backend: *(Optional – Node.js, Express, etc.)*
-* Storage: Local Storage / Database *(if applicable)*
+**Donezo** is a full-stack task management application that helps users efficiently plan, track, and complete their daily tasks.  
+Built with a clean UI and scalable architecture, it ensures a seamless experience for managing both personal and professional workflows.
+
+---
+
+## ✨ Features
+
+- 📝 Create, update, and delete tasks
+- 📊 Track task progress and status
+- 🔐 User authentication & secure access
+- 📅 Organized task management interface
+- ⚡ Fast and responsive UI
+- 🌙 Clean and intuitive design
+
+---
+
+## 🏗️ Tech Stack
+
+### Frontend
+- React.js
+- HTML5, CSS3
+- JavaScript (ES6+)
+
+### Backend
+- Node.js
+- Express.js
+
+### Database
+- MongoDB
+
+### DevOps / Tools
+- Docker
+- Git & GitHub
 
 ---
 
 ## 📂 Project Structure
-
-```
-Todo-App/
-│── index.html
-│── style.css
-│── script.js
-│── assets/
-│── README.md
-```
-
----
+Donezo/
+│
+├── Frontend/ # Client-side application
+├── Backend/ # Server-side logic & APIs
+├── docker-compose.yml
+├── package.json
+└── README.md
 
 ## ⚙️ Installation & Setup
 
-1. Clone the repository:
+### 1️⃣ Clone the repository
 
-   ```bash
-   git clone https://github.com/your-username/todo-app.git
-   ```
+```bash
+git clone https://github.com/Harshy-cmd/Donezo.git
+cd Donezo
 
-2. Navigate to the project directory:
+🎯 Future Improvements
+📱 Mobile responsiveness improvements
+🔔 Notifications & reminders
+📊 Advanced analytics dashboard
+🤝 Collaboration features
+🤝 Contributing
 
-   ```bash
-   cd todo-app
-   ```
+Contributions are welcome!
 
-3. Open `index.html` in your browser
-
-   *(or run using Live Server if using VS Code)*
-
----
-
-## 💡 Usage
-
-* Add tasks using the input field
-* Click on a task to mark it as complete
-* Use edit/delete options to manage tasks
-* Stay organized and track your daily progress
-
----
-
-## 🎯 Future Improvements
-
-* 🔐 User authentication
-* ☁️ Cloud sync
-* 📅 Task scheduling with reminders
-* 🌙 Dark mode
-* 📊 Productivity analytics
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
-
----
-
-## 📄 License
+Fork the repo
+Create a new branch (feature/your-feature)
+Commit your changes
+Push and open a Pull Request
+📄 License
 
 This project is licensed under the MIT License.
 
----
+👨‍💻 Author
 
-## 👨‍💻 Author
+Harsh (Harshy-cmd)
 
-Developed by *Your Name*
+GitHub: https://github.com/Harshy-cmd
+💡 Inspiration
 
----
+Built with the idea of turning chaos into clarity — because your tasks deserve better than sticky notes and forgotten reminders.
 
-⭐ If you found this project helpful, consider giving it a star!
+⭐ If you like this project, consider giving it a star!
