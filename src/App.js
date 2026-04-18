@@ -9,10 +9,12 @@ import Habits   from './components/Habits/Habits';
 import Goals    from './components/Goals/Goals';
 import Analytics from './components/Analytics/Analytics';
 import Calendar  from './components/Calendar/Calendar';
+import TaskModal from './components/TaskModal/TaskModal';
+import Login     from './components/Login/Login';
 
 function AppShell() {
-  const { state } = useApp();
-  const { activeView, sidebarOpen } = state;
+  const { state, dispatch } = useApp();
+  const { activeView, sidebarOpen, showTaskModal, selectedTask } = state;
 
   const views = {
     dashboard: <Dashboard />,
@@ -34,14 +36,32 @@ function AppShell() {
           </Suspense>
         </main>
       </div>
+
+      {/* Modals */}
+      {showTaskModal && (
+        <TaskModal 
+          task={selectedTask} 
+          onClose={() => dispatch({ type: 'CLOSE_TASK_MODAL' })} 
+        />
+      )}
     </div>
   );
+}
+
+function Root() {
+  const { state } = useApp();
+  
+  if (!state.isAuthenticated) {
+    return <Login />;
+  }
+
+  return <AppShell />;
 }
 
 export default function App() {
   return (
     <AppProvider>
-      <AppShell />
+      <Root />
     </AppProvider>
   );
 }

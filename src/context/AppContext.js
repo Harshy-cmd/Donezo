@@ -15,6 +15,7 @@ const initialState = {
   showHabitModal: false,
   selectedTask: null,
   taskFilter: { search: '', status: 'all', priority: 'all', category: 'all', sort: 'dueDate' },
+  isAuthenticated: JSON.parse(localStorage.getItem('donezo_auth')) || false,
 };
 
 function reducer(state, action) {
@@ -22,6 +23,12 @@ function reducer(state, action) {
   switch (action.type) {
     case 'SET_VIEW':
       newState = { ...state, activeView: action.payload };
+      break;
+    case 'LOGIN':
+      newState = { ...state, isAuthenticated: true };
+      break;
+    case 'LOGOUT':
+      newState = { ...state, isAuthenticated: false };
       break;
     case 'SET_TASK_FILTER':
       newState = { ...state, taskFilter: { ...state.taskFilter, ...action.payload } };
@@ -198,7 +205,8 @@ export function AppProvider({ children }) {
     localStorage.setItem('donezo_habits', JSON.stringify(state.habits));
     localStorage.setItem('donezo_goals', JSON.stringify(state.goals));
     localStorage.setItem('donezo_notifications', JSON.stringify(state.notifications));
-  }, [state.tasks, state.habits, state.goals, state.notifications]);
+    localStorage.setItem('donezo_auth', JSON.stringify(state.isAuthenticated));
+  }, [state.tasks, state.habits, state.goals, state.notifications, state.isAuthenticated]);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
