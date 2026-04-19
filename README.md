@@ -1,37 +1,65 @@
-# 🚀 Todo List App
+# 🔴 Donezo
 
-A clean and efficient Todo List application designed to help users organize tasks, manage daily activities, and stay productive. This project focuses on simplicity, performance, and a user-friendly interface.
-
----
-
-## 📌 Features
-
-* ✅ Add new tasks
-* ✏️ Edit existing tasks
-* 🗑️ Delete tasks
-* ✔️ Mark tasks as completed
-* 📱 Responsive design for all devices
-* ⚡ Fast and intuitive user experience
+**Donezo** is a modern, minimalist task management web application designed for ultimate productivity. Featuring a sleek, high-contrast **black-and-red** aesthetic, Donezo keeps you laser-focused on what matters: your tasks, habits, and goals.
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Features
 
-* Frontend: HTML, CSS, JavaScript *(or React / your framework)*
-* Backend: *(Optional – Node.js, Express, etc.)*
-* Storage: Local Storage / Database *(if applicable)*
+Donezo is built with a modular, view-based architecture to manage all aspects of your daily productivity:
+
+* **📊 Dashboard**: Get a high-level overview of your daily progress, active tasks, and upcoming goals.
+* **📝 Tasks Management**: Quickly add, edit, and check off items on your to-do list.
+* **🔄 Habit Tracker**: Build routines with daily habit tracking, ensuring consistency without distraction.
+* **🎯 Goals**: Set long-term objectives and break them down into actionable milestones.
+* **📈 Analytics**: Review your productivity trends through insightful data overlays.
+* **📅 Calendar**: Plan ahead and view tasks and events assigned to specific dates.
+* **📱 Mobile Responsive**: Beautifully optimized for seamless usage on both desktop browsers and mobile devices.
+
+---
+
+## 🎨 Design Philosophy
+
+Donezo stands apart with its **premium aesthetic**:
+* **Strict Black & Red Palette**: Features a bespoke color system built exclusively on deep blacks, grays, and striking blood-red accents (strictly no blues or generic colors), designed to convey urgency, focus, and a sleek modern vibe.
+* **Minimalist Interface**: Clean typography and strategic use of negative space ensure the UI gets out of your way.
+* **Dynamic Animations**: Smooth transitions and micro-animations provide an intuitive and tactile user experience.
+
+---
+
+## 🛠️ Technology Stack
+
+* **Frontend Framework**: React 19
+* **State Management**: React Context API (`AppContext`)
+* **Styling**: Vanilla CSS leveraging custom CSS properties for theme consistency
+* **Testing**: React Testing Library & Jest
+* **Build Tool**: Webpack (via Create React App scripts)
 
 ---
 
 ## 📂 Project Structure
 
-```
-Todo-App/
-│── index.html
-│── style.css
-│── script.js
-│── assets/
-│── README.md
+```text
+Donezo/
+├── public/                 # Static assets
+├── src/
+│   ├── components/         # Modular layout views & UI components
+│   │   ├── Analytics/      # Productivity charts & overviews
+│   │   ├── Calendar/       # Monthly/Weekly date views
+│   │   ├── Dashboard/      # Main application landing page
+│   │   ├── Goals/          # Long-term milestone tracker
+│   │   ├── Habits/         # Daily routine builder
+│   │   ├── Header/         # Top navigation and user info
+│   │   ├── Sidebar/        # App navigation & routing
+│   │   └── Tasks/          # Core to-do list functionalities
+│   ├── context/            # Scalable global state management
+│   │   └── AppContext.js
+│   ├── App.css             # Root Application Styling
+│   ├── App.js              # Application shell (orchestrates views)
+│   ├── index.css           # Global theme variables & typography
+│   └── index.js            # React entry point
+├── package.json            # Project dependencies & scripts
+└── README.md
 ```
 
 ---
@@ -40,63 +68,51 @@ Todo-App/
 
 ### Prerequisites
 
-Ensure you have Node.js (version 16 or higher) installed on your system.
+Ensure you have [Node.js](https://nodejs.org/) (version 16 or higher) installed on your system.
 
 ### Installation
 
-1. Clone the repository:
-
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/todo-app.git
+   git clone https://github.com/your-username/Donezo.git
+   cd Donezo
    ```
 
-2. Navigate to the project directory:
-
+2. **Install dependencies:**
    ```bash
-   cd todo-app
+   npm install
    ```
 
-3. Open `index.html` in your browser
+3. **Start the development server:**
+   ```bash
+   npm start
+   ```
+   *The app will automatically open in your default browser at `http://localhost:3000`.*
 
-   *(or run using Live Server if using VS Code)*
+### Available Scripts
+
+In the project directory, you can run:
+
+* `npm start`: Runs the app in the development mode.
+* `npm test`: Launches the test runner in the interactive watch mode.
+* `npm run build`: Builds the app for production to the `build` folder.
 
 ---
 
-## 💡 Usage
+## 💡 Future Enhancements
 
-* Add tasks using the input field
-* Click on a task to mark it as complete
-* Use edit/delete options to manage tasks
-* Stay organized and track your daily progress
-
----
-
-## 🎯 Future Improvements
-
-* 🔐 User authentication
-* ☁️ Cloud sync
-* 📅 Task scheduling with reminders
-* 🌙 Dark mode
-* 📊 Productivity analytics
+* Implementing persistent cloud sync for cross-device usage.
+* Adding customizable notification reminders.
+* Expanding Analytics to show year-in-review summaries.
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
+Contributions, issues, and feature requests are welcome! Feel free to fork this project and submit a Pull Request.
 
 ---
 
 ## 📄 License
 
 This project is licensed under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-Developed by *Your Name*
-
----
-
-⭐ If you found this project helpful, consider giving it a star!
