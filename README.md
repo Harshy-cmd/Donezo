@@ -3,8 +3,8 @@
 **Donezo** is a full-stack, modern task management web application designed for ultimate productivity. Featuring a sleek, high-contrast **black-and-red** aesthetic, Donezo keeps you laser-focused on what matters: your tasks, habits, and goals — all securely persisted to a real backend database.
 
 ### 🌍 Live Deployments
-- **Frontend (Vercel):** [https://your-vercel-app-url.vercel.app](https://your-vercel-app-url.vercel.app) *(Replace with your actual Vercel link!)*
-- **Backend API (Render):** [https://donezo-af1z.onrender.com](https://donezo-af1z.onrender.com)
+- **Frontend (Vercel):** [donezo.vercel.app](https://donezo.vercel.app)
+- **Backend API (Render):** [donezo-af1z.onrender.com](https://donezo-af1z.onrender.com)
 
 ---
 
@@ -181,6 +181,29 @@ npm start
 ```
 
 The app will open in your browser at `http://localhost:3000`.
+
+---
+
+### 🚀 Production Deployment
+
+Donezo is pre-configured for full-stack deployment using **Vercel** (Frontend) and **Render** (Backend).
+
+#### Deploying the Backend (Render)
+1. Push your code to GitHub.
+2. In [Render](https://render.com), create a new **Web Service**.
+3. Connect your repository. Render will automatically detect the Node.js environment.
+4. Set the **Build Command** to: `npm install`
+5. Set the **Start Command** to: `node server.js`
+6. Under **Root Directory**, enter: `Backend`
+7. Once deployed, note your Render URL (e.g., `https://donezo-af1z.onrender.com`).
+
+#### Deploying the Frontend (Vercel)
+1. In [Vercel](https://vercel.com), create a new **Project** and import your GitHub repository.
+2. Under **Framework Preset**, select **Create React App**.
+3. Vercel will automatically read the `vercel.json` included in the root directory, pointing it to the `Frontend/` folder.
+4. Go to **Environment Variables** and add:
+   - `REACT_APP_API_URL` = `https://your-render-url.onrender.com/api` (Replace with your actual Render URL)
+5. Click **Deploy**.
 
 ---
 
