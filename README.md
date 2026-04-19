@@ -3,7 +3,7 @@
 **Donezo** is a full-stack, modern task management web application designed for ultimate productivity. Featuring a sleek, high-contrast **black-and-red** aesthetic, Donezo keeps you laser-focused on what matters: your tasks, habits, and goals — all securely persisted to a real backend database.
 
 ### 🌍 Live Deployments
-- **Frontend (Vercel):** [donezo.vercel.app](https://donezo.vercel.app)
+- **Frontend (Vercel):** [donezo-ebon.vercel.app](https://donezo-ebon.vercel.app)
 - **Backend API (Render):** [donezo-af1z.onrender.com](https://donezo-af1z.onrender.com)
 
 ---
